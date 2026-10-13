@@ -1,0 +1,243 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "When humpbacks are reported at seven east-coast sites (share of each site's reports by month), north at top.",
+  "data": {
+    "url": "data/c7_eastcoast_site_month.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "month": "number",
+        "records": "number",
+        "site_total": "number",
+        "share_pct": "number",
+        "order_south_to_north": "number",
+        "lat": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datum.site + '  (' + datum.site_total + ')'",
+      "as": "site_label"
+    }
+  ],
+  "facet": {
+    "row": {
+      "field": "site_label",
+      "type": "nominal",
+      "title": null,
+      "sort": {
+        "field": "order_south_to_north",
+        "order": "descending"
+      },
+      "header": {
+        "labelAngle": 0,
+        "labelAlign": "right",
+        "labelOrient": "left",
+        "labelPadding": 8,
+        "labelFontSize": 12,
+        "labelFontWeight": 500
+      }
+    }
+  },
+  "spec": {
+    "width": 480,
+    "height": 38,
+    "layer": [
+      {
+        "mark": {
+          "type": "area",
+          "interpolate": "monotone",
+          "fill": "#2a78d6",
+          "fillOpacity": 0.75,
+          "stroke": "#0d366b",
+          "strokeWidth": 1
+        },
+        "encoding": {
+          "x": {
+            "field": "month",
+            "type": "quantitative",
+            "title": null,
+            "scale": {
+              "domain": [
+                0.7,
+                12.3
+              ],
+              "nice": false
+            },
+            "axis": {
+              "values": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "labelExpr": "['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][datum.value - 1]",
+              "grid": true,
+              "ticks": false,
+              "domain": false
+            }
+          },
+          "y": {
+            "field": "share_pct",
+            "type": "quantitative",
+            "axis": null,
+            "scale": {
+              "domain": [
+                0,
+                55
+              ],
+              "range": [
+                38,
+                -20
+              ]
+            }
+          }
+        }
+      },
+      {
+        "params": [
+          {
+            "name": "hover",
+            "select": {
+              "type": "point",
+              "fields": [
+                "month"
+              ],
+              "on": "pointerover",
+              "nearest": true,
+              "clear": "pointerout"
+            }
+          }
+        ],
+        "mark": {
+          "type": "point",
+          "filled": true,
+          "size": 40,
+          "color": "#0d366b"
+        },
+        "encoding": {
+          "x": {
+            "field": "month",
+            "type": "quantitative"
+          },
+          "y": {
+            "field": "share_pct",
+            "type": "quantitative"
+          },
+          "opacity": {
+            "condition": {
+              "param": "hover",
+              "empty": false,
+              "value": 1
+            },
+            "value": 0
+          },
+          "tooltip": [
+            {
+              "field": "site",
+              "title": "Site"
+            },
+            {
+              "field": "month_name",
+              "title": "Month"
+            },
+            {
+              "field": "share_pct",
+              "title": "% of site's reports",
+              "format": ".1f"
+            },
+            {
+              "field": "records",
+              "title": "Reports"
+            }
+          ]
+        }
+      },
+      {
+        "transform": [
+          {
+            "calculate": "datum.site === 'Sydney' && datum.month === 6 ? 'heading north' : datum.site === 'Sydney' && datum.month === 10 ? 'heading south' : datum.site === 'Eden' && datum.month === 11 ? '← mothers and calves heading south' : datum.site === 'Hervey Bay' && datum.month === 8 ? 'resting stopover' : ''",
+            "as": "note"
+          },
+          {
+            "filter": "datum.note !== ''"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "dx": 8,
+          "dy": -4,
+          "fontSize": 11,
+          "fontWeight": 600,
+          "fill": "#1d1d1b",
+          "tooltip": false
+        },
+        "encoding": {
+          "x": {
+            "field": "month",
+            "type": "quantitative"
+          },
+          "y": {
+            "field": "share_pct",
+            "type": "quantitative"
+          },
+          "text": {
+            "field": "note"
+          }
+        }
+      }
+    ]
+  },
+  "bounds": "flush",
+  "config": {
+    "font": "Inter, system-ui, sans-serif",
+    "background": "transparent",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 500,
+      "gridColor": "#ecebe7",
+      "domainColor": "#cfcdc6",
+      "tickColor": "#cfcdc6"
+    },
+    "legend": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 600,
+      "symbolStrokeWidth": 0
+    },
+    "header": {
+      "labelColor": "#1d1d1b",
+      "titleColor": "#52514e",
+      "labelFontSize": 12,
+      "labelFontWeight": 600
+    },
+    "title": {
+      "color": "#1d1d1b",
+      "fontSize": 14,
+      "fontWeight": 600,
+      "anchor": "start",
+      "subtitleColor": "#52514e"
+    },
+    "facet": {
+      "spacing": 0
+    }
+  }
+}

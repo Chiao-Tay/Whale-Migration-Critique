@@ -1,0 +1,85 @@
+site,month,records,site_total,share_pct,order_south_to_north,lat,month_name
+Eden,1,0,234,0.0,1,-37.05,Jan
+Eden,2,1,234,0.4,1,-37.05,Feb
+Eden,3,0,234,0.0,1,-37.05,Mar
+Eden,4,0,234,0.0,1,-37.05,Apr
+Eden,5,2,234,0.9,1,-37.05,May
+Eden,6,5,234,2.1,1,-37.05,Jun
+Eden,7,6,234,2.6,1,-37.05,Jul
+Eden,8,4,234,1.7,1,-37.05,Aug
+Eden,9,69,234,29.5,1,-37.05,Sep
+Eden,10,122,234,52.1,1,-37.05,Oct
+Eden,11,25,234,10.7,1,-37.05,Nov
+Eden,12,0,234,0.0,1,-37.05,Dec
+Sydney,1,1,591,0.2,2,-33.9,Jan
+Sydney,2,1,591,0.2,2,-33.9,Feb
+Sydney,3,0,591,0.0,2,-33.9,Mar
+Sydney,4,3,591,0.5,2,-33.9,Apr
+Sydney,5,26,591,4.4,2,-33.9,May
+Sydney,6,132,591,22.3,2,-33.9,Jun
+Sydney,7,120,591,20.3,2,-33.9,Jul
+Sydney,8,56,591,9.5,2,-33.9,Aug
+Sydney,9,99,591,16.8,2,-33.9,Sep
+Sydney,10,136,591,23.0,2,-33.9,Oct
+Sydney,11,16,591,2.7,2,-33.9,Nov
+Sydney,12,1,591,0.2,2,-33.9,Dec
+Port Stephens,1,0,156,0.0,3,-32.7,Jan
+Port Stephens,2,0,156,0.0,3,-32.7,Feb
+Port Stephens,3,0,156,0.0,3,-32.7,Mar
+Port Stephens,4,0,156,0.0,3,-32.7,Apr
+Port Stephens,5,6,156,3.8,3,-32.7,May
+Port Stephens,6,61,156,39.1,3,-32.7,Jun
+Port Stephens,7,32,156,20.5,3,-32.7,Jul
+Port Stephens,8,21,156,13.5,3,-32.7,Aug
+Port Stephens,9,21,156,13.5,3,-32.7,Sep
+Port Stephens,10,15,156,9.6,3,-32.7,Oct
+Port Stephens,11,0,156,0.0,3,-32.7,Nov
+Port Stephens,12,0,156,0.0,3,-32.7,Dec
+Byron Bay,1,0,809,0.0,4,-28.65,Jan
+Byron Bay,2,0,809,0.0,4,-28.65,Feb
+Byron Bay,3,0,809,0.0,4,-28.65,Mar
+Byron Bay,4,1,809,0.1,4,-28.65,Apr
+Byron Bay,5,1,809,0.1,4,-28.65,May
+Byron Bay,6,86,809,10.6,4,-28.65,Jun
+Byron Bay,7,245,809,30.3,4,-28.65,Jul
+Byron Bay,8,189,809,23.4,4,-28.65,Aug
+Byron Bay,9,174,809,21.5,4,-28.65,Sep
+Byron Bay,10,110,809,13.6,4,-28.65,Oct
+Byron Bay,11,3,809,0.4,4,-28.65,Nov
+Byron Bay,12,0,809,0.0,4,-28.65,Dec
+Gold Coast,1,0,326,0.0,5,-28.05,Jan
+Gold Coast,2,0,326,0.0,5,-28.05,Feb
+Gold Coast,3,0,326,0.0,5,-28.05,Mar
+Gold Coast,4,0,326,0.0,5,-28.05,Apr
+Gold Coast,5,4,326,1.2,5,-28.05,May
+Gold Coast,6,58,326,17.8,5,-28.05,Jun
+Gold Coast,7,54,326,16.6,5,-28.05,Jul
+Gold Coast,8,56,326,17.2,5,-28.05,Aug
+Gold Coast,9,103,326,31.6,5,-28.05,Sep
+Gold Coast,10,48,326,14.7,5,-28.05,Oct
+Gold Coast,11,3,326,0.9,5,-28.05,Nov
+Gold Coast,12,0,326,0.0,5,-28.05,Dec
+Sunshine Coast,1,0,136,0.0,6,-26.55,Jan
+Sunshine Coast,2,1,136,0.7,6,-26.55,Feb
+Sunshine Coast,3,0,136,0.0,6,-26.55,Mar
+Sunshine Coast,4,0,136,0.0,6,-26.55,Apr
+Sunshine Coast,5,1,136,0.7,6,-26.55,May
+Sunshine Coast,6,16,136,11.8,6,-26.55,Jun
+Sunshine Coast,7,22,136,16.2,6,-26.55,Jul
+Sunshine Coast,8,25,136,18.4,6,-26.55,Aug
+Sunshine Coast,9,52,136,38.2,6,-26.55,Sep
+Sunshine Coast,10,19,136,14.0,6,-26.55,Oct
+Sunshine Coast,11,0,136,0.0,6,-26.55,Nov
+Sunshine Coast,12,0,136,0.0,6,-26.55,Dec
+Hervey Bay,1,0,1766,0.0,7,-25.0,Jan
+Hervey Bay,2,0,1766,0.0,7,-25.0,Feb
+Hervey Bay,3,1,1766,0.1,7,-25.0,Mar
+Hervey Bay,4,0,1766,0.0,7,-25.0,Apr
+Hervey Bay,5,0,1766,0.0,7,-25.0,May
+Hervey Bay,6,3,1766,0.2,7,-25.0,Jun
+Hervey Bay,7,136,1766,7.7,7,-25.0,Jul
+Hervey Bay,8,817,1766,46.3,7,-25.0,Aug
+Hervey Bay,9,616,1766,34.9,7,-25.0,Sep
+Hervey Bay,10,191,1766,10.8,7,-25.0,Oct
+Hervey Bay,11,2,1766,0.1,7,-25.0,Nov
+Hervey Bay,12,0,1766,0.0,7,-25.0,Dec

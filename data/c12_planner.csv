@@ -1,0 +1,13 @@
+site,state,lat,species_name,records,start_month,end_month,peak_month,start_name,end_name,peak_name
+Warrnambool,VIC,-38.4,Southern Right Whale,756,6,9,8,Jun,Sep,Aug
+Eden,NSW,-37.05,Humpback Whale,234,9,11,10,Sep,Nov,Oct
+Augusta,WA,-34.35,Humpback Whale,696,6,7,6,Jun,Jul,Jun
+Sydney,NSW,-33.9,Humpback Whale,591,6,10,10,Jun,Oct,Oct
+Port Stephens,NSW,-32.7,Humpback Whale,156,6,9,6,Jun,Sep,Jun
+Perth,WA,-32.0,Humpback Whale,545,8,11,10,Aug,Nov,Oct
+Head of Bight,SA,-31.55,Southern Right Whale,2417,7,9,8,Jul,Sep,Aug
+Byron Bay,NSW,-28.65,Humpback Whale,809,6,10,7,Jun,Oct,Jul
+Gold Coast,QLD,-28.05,Humpback Whale,326,6,10,9,Jun,Oct,Sep
+Sunshine Coast,QLD,-26.55,Humpback Whale,136,6,10,9,Jun,Oct,Sep
+Hervey Bay,QLD,-25.0,Humpback Whale,1766,8,10,8,Aug,Oct,Aug
+Exmouth,WA,-22.0,Humpback Whale,788,7,9,8,Jul,Sep,Aug

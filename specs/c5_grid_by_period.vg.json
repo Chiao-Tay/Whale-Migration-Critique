@@ -1,0 +1,823 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Whale reports per 1-degree square, by two-month period, 2016-2025.",
+  "vconcat": [
+    {
+      "hconcat": [
+        {
+          "title": {
+            "text": "January – February · 29 reports",
+            "fontSize": 12,
+            "fontWeight": 600
+          },
+          "width": 205,
+          "height": 175,
+          "projection": {
+            "type": "conicEqualArea",
+            "parallels": [
+              -18,
+              -36
+            ],
+            "rotate": [
+              -132,
+              0,
+              0
+            ]
+          },
+          "layer": [
+            {
+              "data": {
+                "url": "data/australia-states.json",
+                "format": {
+                  "type": "topojson",
+                  "feature": "australia_states"
+                }
+              },
+              "transform": [
+                {
+                  "filter": "datum.properties.name !== 'Macquarie Island' && datum.properties.name !== 'Lord Howe Island'"
+                }
+              ],
+              "mark": {
+                "type": "geoshape",
+                "fill": "#e9e7e2",
+                "stroke": "#ffffff",
+                "strokeWidth": 0.8,
+                "tooltip": false
+              }
+            },
+            {
+              "data": {
+                "url": "data/c5_grid_by_period.csv",
+                "format": {
+                  "type": "csv",
+                  "parse": {
+                    "period_order": "number",
+                    "lat_bin": "number",
+                    "lon_bin": "number",
+                    "records": "number"
+                  }
+                }
+              },
+              "transform": [
+                {
+                  "filter": "datum.period === 'Jan-Feb'"
+                }
+              ],
+              "mark": {
+                "type": "square",
+                "size": 22,
+                "opacity": 0.95
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lon_bin",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "lat_bin",
+                  "type": "quantitative"
+                },
+                "color": {
+                  "field": "records",
+                  "type": "quantitative",
+                  "title": "Reports per 1° square",
+                  "scale": {
+                    "type": "log",
+                    "domain": [
+                      1,
+                      1000
+                    ],
+                    "clamp": true,
+                    "range": [
+                      "#9ec5f4",
+                      "#0d366b"
+                    ]
+                  },
+                  "legend": {
+                    "orient": "bottom",
+                    "direction": "horizontal",
+                    "gradientLength": 220,
+                    "values": [
+                      1,
+                      10,
+                      100,
+                      1000
+                    ]
+                  }
+                },
+                "tooltip": [
+                  {
+                    "field": "period",
+                    "title": "Months"
+                  },
+                  {
+                    "field": "records",
+                    "title": "Reports",
+                    "format": ","
+                  },
+                  {
+                    "field": "lat_bin",
+                    "title": "Latitude",
+                    "format": ".1f"
+                  },
+                  {
+                    "field": "lon_bin",
+                    "title": "Longitude",
+                    "format": ".1f"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "text": "March – April · 65 reports",
+            "fontSize": 12,
+            "fontWeight": 600
+          },
+          "width": 205,
+          "height": 175,
+          "projection": {
+            "type": "conicEqualArea",
+            "parallels": [
+              -18,
+              -36
+            ],
+            "rotate": [
+              -132,
+              0,
+              0
+            ]
+          },
+          "layer": [
+            {
+              "data": {
+                "url": "data/australia-states.json",
+                "format": {
+                  "type": "topojson",
+                  "feature": "australia_states"
+                }
+              },
+              "transform": [
+                {
+                  "filter": "datum.properties.name !== 'Macquarie Island' && datum.properties.name !== 'Lord Howe Island'"
+                }
+              ],
+              "mark": {
+                "type": "geoshape",
+                "fill": "#e9e7e2",
+                "stroke": "#ffffff",
+                "strokeWidth": 0.8,
+                "tooltip": false
+              }
+            },
+            {
+              "data": {
+                "url": "data/c5_grid_by_period.csv",
+                "format": {
+                  "type": "csv",
+                  "parse": {
+                    "period_order": "number",
+                    "lat_bin": "number",
+                    "lon_bin": "number",
+                    "records": "number"
+                  }
+                }
+              },
+              "transform": [
+                {
+                  "filter": "datum.period === 'Mar-Apr'"
+                }
+              ],
+              "mark": {
+                "type": "square",
+                "size": 22,
+                "opacity": 0.95
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lon_bin",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "lat_bin",
+                  "type": "quantitative"
+                },
+                "color": {
+                  "field": "records",
+                  "type": "quantitative",
+                  "title": "Reports per 1° square",
+                  "scale": {
+                    "type": "log",
+                    "domain": [
+                      1,
+                      1000
+                    ],
+                    "clamp": true,
+                    "range": [
+                      "#9ec5f4",
+                      "#0d366b"
+                    ]
+                  },
+                  "legend": {
+                    "orient": "bottom",
+                    "direction": "horizontal",
+                    "gradientLength": 220,
+                    "values": [
+                      1,
+                      10,
+                      100,
+                      1000
+                    ]
+                  }
+                },
+                "tooltip": [
+                  {
+                    "field": "period",
+                    "title": "Months"
+                  },
+                  {
+                    "field": "records",
+                    "title": "Reports",
+                    "format": ","
+                  },
+                  {
+                    "field": "lat_bin",
+                    "title": "Latitude",
+                    "format": ".1f"
+                  },
+                  {
+                    "field": "lon_bin",
+                    "title": "Longitude",
+                    "format": ".1f"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "text": "May – June · 2,022 reports",
+            "fontSize": 12,
+            "fontWeight": 600
+          },
+          "width": 205,
+          "height": 175,
+          "projection": {
+            "type": "conicEqualArea",
+            "parallels": [
+              -18,
+              -36
+            ],
+            "rotate": [
+              -132,
+              0,
+              0
+            ]
+          },
+          "layer": [
+            {
+              "data": {
+                "url": "data/australia-states.json",
+                "format": {
+                  "type": "topojson",
+                  "feature": "australia_states"
+                }
+              },
+              "transform": [
+                {
+                  "filter": "datum.properties.name !== 'Macquarie Island' && datum.properties.name !== 'Lord Howe Island'"
+                }
+              ],
+              "mark": {
+                "type": "geoshape",
+                "fill": "#e9e7e2",
+                "stroke": "#ffffff",
+                "strokeWidth": 0.8,
+                "tooltip": false
+              }
+            },
+            {
+              "data": {
+                "url": "data/c5_grid_by_period.csv",
+                "format": {
+                  "type": "csv",
+                  "parse": {
+                    "period_order": "number",
+                    "lat_bin": "number",
+                    "lon_bin": "number",
+                    "records": "number"
+                  }
+                }
+              },
+              "transform": [
+                {
+                  "filter": "datum.period === 'May-Jun'"
+                }
+              ],
+              "mark": {
+                "type": "square",
+                "size": 22,
+                "opacity": 0.95
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lon_bin",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "lat_bin",
+                  "type": "quantitative"
+                },
+                "color": {
+                  "field": "records",
+                  "type": "quantitative",
+                  "title": "Reports per 1° square",
+                  "scale": {
+                    "type": "log",
+                    "domain": [
+                      1,
+                      1000
+                    ],
+                    "clamp": true,
+                    "range": [
+                      "#9ec5f4",
+                      "#0d366b"
+                    ]
+                  },
+                  "legend": {
+                    "orient": "bottom",
+                    "direction": "horizontal",
+                    "gradientLength": 220,
+                    "values": [
+                      1,
+                      10,
+                      100,
+                      1000
+                    ]
+                  }
+                },
+                "tooltip": [
+                  {
+                    "field": "period",
+                    "title": "Months"
+                  },
+                  {
+                    "field": "records",
+                    "title": "Reports",
+                    "format": ","
+                  },
+                  {
+                    "field": "lat_bin",
+                    "title": "Latitude",
+                    "format": ".1f"
+                  },
+                  {
+                    "field": "lon_bin",
+                    "title": "Longitude",
+                    "format": ".1f"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "hconcat": [
+        {
+          "title": {
+            "text": "July – August · 6,770 reports (busiest)",
+            "fontSize": 12,
+            "fontWeight": 600
+          },
+          "width": 205,
+          "height": 175,
+          "projection": {
+            "type": "conicEqualArea",
+            "parallels": [
+              -18,
+              -36
+            ],
+            "rotate": [
+              -132,
+              0,
+              0
+            ]
+          },
+          "layer": [
+            {
+              "data": {
+                "url": "data/australia-states.json",
+                "format": {
+                  "type": "topojson",
+                  "feature": "australia_states"
+                }
+              },
+              "transform": [
+                {
+                  "filter": "datum.properties.name !== 'Macquarie Island' && datum.properties.name !== 'Lord Howe Island'"
+                }
+              ],
+              "mark": {
+                "type": "geoshape",
+                "fill": "#e9e7e2",
+                "stroke": "#ffffff",
+                "strokeWidth": 0.8,
+                "tooltip": false
+              }
+            },
+            {
+              "data": {
+                "url": "data/c5_grid_by_period.csv",
+                "format": {
+                  "type": "csv",
+                  "parse": {
+                    "period_order": "number",
+                    "lat_bin": "number",
+                    "lon_bin": "number",
+                    "records": "number"
+                  }
+                }
+              },
+              "transform": [
+                {
+                  "filter": "datum.period === 'Jul-Aug'"
+                }
+              ],
+              "mark": {
+                "type": "square",
+                "size": 22,
+                "opacity": 0.95
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lon_bin",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "lat_bin",
+                  "type": "quantitative"
+                },
+                "color": {
+                  "field": "records",
+                  "type": "quantitative",
+                  "title": "Reports per 1° square",
+                  "scale": {
+                    "type": "log",
+                    "domain": [
+                      1,
+                      1000
+                    ],
+                    "clamp": true,
+                    "range": [
+                      "#9ec5f4",
+                      "#0d366b"
+                    ]
+                  },
+                  "legend": {
+                    "orient": "bottom",
+                    "direction": "horizontal",
+                    "gradientLength": 220,
+                    "values": [
+                      1,
+                      10,
+                      100,
+                      1000
+                    ]
+                  }
+                },
+                "tooltip": [
+                  {
+                    "field": "period",
+                    "title": "Months"
+                  },
+                  {
+                    "field": "records",
+                    "title": "Reports",
+                    "format": ","
+                  },
+                  {
+                    "field": "lat_bin",
+                    "title": "Latitude",
+                    "format": ".1f"
+                  },
+                  {
+                    "field": "lon_bin",
+                    "title": "Longitude",
+                    "format": ".1f"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "text": "September – October · 4,807 reports",
+            "fontSize": 12,
+            "fontWeight": 600
+          },
+          "width": 205,
+          "height": 175,
+          "projection": {
+            "type": "conicEqualArea",
+            "parallels": [
+              -18,
+              -36
+            ],
+            "rotate": [
+              -132,
+              0,
+              0
+            ]
+          },
+          "layer": [
+            {
+              "data": {
+                "url": "data/australia-states.json",
+                "format": {
+                  "type": "topojson",
+                  "feature": "australia_states"
+                }
+              },
+              "transform": [
+                {
+                  "filter": "datum.properties.name !== 'Macquarie Island' && datum.properties.name !== 'Lord Howe Island'"
+                }
+              ],
+              "mark": {
+                "type": "geoshape",
+                "fill": "#e9e7e2",
+                "stroke": "#ffffff",
+                "strokeWidth": 0.8,
+                "tooltip": false
+              }
+            },
+            {
+              "data": {
+                "url": "data/c5_grid_by_period.csv",
+                "format": {
+                  "type": "csv",
+                  "parse": {
+                    "period_order": "number",
+                    "lat_bin": "number",
+                    "lon_bin": "number",
+                    "records": "number"
+                  }
+                }
+              },
+              "transform": [
+                {
+                  "filter": "datum.period === 'Sep-Oct'"
+                }
+              ],
+              "mark": {
+                "type": "square",
+                "size": 22,
+                "opacity": 0.95
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lon_bin",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "lat_bin",
+                  "type": "quantitative"
+                },
+                "color": {
+                  "field": "records",
+                  "type": "quantitative",
+                  "title": "Reports per 1° square",
+                  "scale": {
+                    "type": "log",
+                    "domain": [
+                      1,
+                      1000
+                    ],
+                    "clamp": true,
+                    "range": [
+                      "#9ec5f4",
+                      "#0d366b"
+                    ]
+                  },
+                  "legend": {
+                    "orient": "bottom",
+                    "direction": "horizontal",
+                    "gradientLength": 220,
+                    "values": [
+                      1,
+                      10,
+                      100,
+                      1000
+                    ]
+                  }
+                },
+                "tooltip": [
+                  {
+                    "field": "period",
+                    "title": "Months"
+                  },
+                  {
+                    "field": "records",
+                    "title": "Reports",
+                    "format": ","
+                  },
+                  {
+                    "field": "lat_bin",
+                    "title": "Latitude",
+                    "format": ".1f"
+                  },
+                  {
+                    "field": "lon_bin",
+                    "title": "Longitude",
+                    "format": ".1f"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "text": "November – December · 326 reports",
+            "fontSize": 12,
+            "fontWeight": 600
+          },
+          "width": 205,
+          "height": 175,
+          "projection": {
+            "type": "conicEqualArea",
+            "parallels": [
+              -18,
+              -36
+            ],
+            "rotate": [
+              -132,
+              0,
+              0
+            ]
+          },
+          "layer": [
+            {
+              "data": {
+                "url": "data/australia-states.json",
+                "format": {
+                  "type": "topojson",
+                  "feature": "australia_states"
+                }
+              },
+              "transform": [
+                {
+                  "filter": "datum.properties.name !== 'Macquarie Island' && datum.properties.name !== 'Lord Howe Island'"
+                }
+              ],
+              "mark": {
+                "type": "geoshape",
+                "fill": "#e9e7e2",
+                "stroke": "#ffffff",
+                "strokeWidth": 0.8,
+                "tooltip": false
+              }
+            },
+            {
+              "data": {
+                "url": "data/c5_grid_by_period.csv",
+                "format": {
+                  "type": "csv",
+                  "parse": {
+                    "period_order": "number",
+                    "lat_bin": "number",
+                    "lon_bin": "number",
+                    "records": "number"
+                  }
+                }
+              },
+              "transform": [
+                {
+                  "filter": "datum.period === 'Nov-Dec'"
+                }
+              ],
+              "mark": {
+                "type": "square",
+                "size": 22,
+                "opacity": 0.95
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lon_bin",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "lat_bin",
+                  "type": "quantitative"
+                },
+                "color": {
+                  "field": "records",
+                  "type": "quantitative",
+                  "title": "Reports per 1° square",
+                  "scale": {
+                    "type": "log",
+                    "domain": [
+                      1,
+                      1000
+                    ],
+                    "clamp": true,
+                    "range": [
+                      "#9ec5f4",
+                      "#0d366b"
+                    ]
+                  },
+                  "legend": {
+                    "orient": "bottom",
+                    "direction": "horizontal",
+                    "gradientLength": 220,
+                    "values": [
+                      1,
+                      10,
+                      100,
+                      1000
+                    ]
+                  }
+                },
+                "tooltip": [
+                  {
+                    "field": "period",
+                    "title": "Months"
+                  },
+                  {
+                    "field": "records",
+                    "title": "Reports",
+                    "format": ","
+                  },
+                  {
+                    "field": "lat_bin",
+                    "title": "Latitude",
+                    "format": ".1f"
+                  },
+                  {
+                    "field": "lon_bin",
+                    "title": "Longitude",
+                    "format": ".1f"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "resolve": {
+    "scale": {
+      "color": "shared"
+    },
+    "legend": {
+      "color": "shared"
+    }
+  },
+  "spacing": 14,
+  "config": {
+    "font": "Inter, system-ui, sans-serif",
+    "background": "transparent",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 500,
+      "gridColor": "#ecebe7",
+      "domainColor": "#cfcdc6",
+      "tickColor": "#cfcdc6"
+    },
+    "legend": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 600,
+      "symbolStrokeWidth": 0
+    },
+    "header": {
+      "labelColor": "#1d1d1b",
+      "titleColor": "#52514e",
+      "labelFontSize": 12,
+      "labelFontWeight": 600
+    },
+    "title": {
+      "color": "#1d1d1b",
+      "fontSize": 14,
+      "fontWeight": 600,
+      "anchor": "start",
+      "subtitleColor": "#52514e"
+    }
+  }
+}

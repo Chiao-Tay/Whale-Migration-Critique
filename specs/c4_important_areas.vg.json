@@ -1,0 +1,316 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Biologically Important Areas for whales (DCCEEW). Pick a species or click a behaviour in the legend.",
+  "width": 640,
+  "height": 500,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0,
+      0
+    ]
+  },
+  "params": [
+    {
+      "name": "species_pick",
+      "value": "All whales",
+      "bind": {
+        "input": "select",
+        "name": "Species: ",
+        "options": [
+          "All whales",
+          "Humpback Whale",
+          "Southern Right Whale",
+          "Pygmy Blue Whale",
+          "Blue and Pygmy Blue Whale",
+          "Sperm Whale"
+        ]
+      }
+    }
+  ],
+  "layer": [
+    {
+      "data": {
+        "url": "data/whale-bias.json",
+        "format": {
+          "type": "topojson",
+          "feature": "whale_bias"
+        }
+      },
+      "params": [
+        {
+          "name": "behaviour",
+          "select": {
+            "type": "point",
+            "fields": [
+              "properties.BEHAVIOUR_CAT"
+            ]
+          },
+          "bind": "legend"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "color": {
+          "field": "properties.BEHAVIOUR_CAT",
+          "type": "nominal",
+          "title": "What whales do here",
+          "scale": {
+            "domain": [
+              "Migration",
+              "Foraging",
+              "Resting",
+              "Reproduction"
+            ],
+            "range": [
+              "#2a78d6",
+              "#eda100",
+              "#1baf7a",
+              "#008300"
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal"
+          }
+        },
+        "stroke": {
+          "field": "properties.BEHAVIOUR_CAT",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Migration",
+              "Foraging",
+              "Resting",
+              "Reproduction"
+            ],
+            "range": [
+              "#2a78d6",
+              "#eda100",
+              "#1baf7a",
+              "#008300"
+            ]
+          }
+        },
+        "fillOpacity": {
+          "condition": [
+            {
+              "test": "species_pick !== 'All whales' && datum.properties.COMMON_NAME !== species_pick",
+              "value": 0.02
+            },
+            {
+              "param": "behaviour",
+              "value": 0.32
+            }
+          ],
+          "value": 0.03
+        },
+        "strokeOpacity": {
+          "condition": [
+            {
+              "test": "species_pick !== 'All whales' && datum.properties.COMMON_NAME !== species_pick",
+              "value": 0.05
+            },
+            {
+              "param": "behaviour",
+              "value": 0.9
+            }
+          ],
+          "value": 0.08
+        },
+        "tooltip": [
+          {
+            "field": "properties.COMMON_NAME",
+            "title": "Species"
+          },
+          {
+            "field": "properties.BEHAVIOUR_CAT",
+            "title": "Behaviour"
+          },
+          {
+            "field": "properties.SEASON",
+            "title": "When"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/australia-states.json",
+        "format": {
+          "type": "topojson",
+          "feature": "australia_states"
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.properties.name !== 'Macquarie Island' && datum.properties.name !== 'Lord Howe Island'"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e9e7e2",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.8,
+        "tooltip": false
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 155.5,
+            "lat": -14.5,
+            "text": [
+              "Humpback calving grounds",
+              "(Great Barrier Reef)"
+            ]
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 0,
+        "dy": 0,
+        "fontSize": 11,
+        "fontWeight": 600,
+        "fill": "#1d1d1b",
+        "lineHeight": 13,
+        "tooltip": false
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 120.5,
+            "lat": -12.6,
+            "text": [
+              "Humpback calving",
+              "(Kimberley)"
+            ]
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": 0,
+        "dy": 0,
+        "fontSize": 11,
+        "fontWeight": 600,
+        "fill": "#1d1d1b",
+        "lineHeight": 13,
+        "tooltip": false
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 131.5,
+            "lat": -35.6,
+            "text": "Southern right whale nursery coast"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dx": 0,
+        "dy": 0,
+        "fontSize": 11,
+        "fontWeight": 600,
+        "fill": "#1d1d1b",
+        "lineHeight": 13,
+        "tooltip": false
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Inter, system-ui, sans-serif",
+    "background": "transparent",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 500,
+      "gridColor": "#ecebe7",
+      "domainColor": "#cfcdc6",
+      "tickColor": "#cfcdc6"
+    },
+    "legend": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 600,
+      "symbolStrokeWidth": 0
+    },
+    "header": {
+      "labelColor": "#1d1d1b",
+      "titleColor": "#52514e",
+      "labelFontSize": 12,
+      "labelFontWeight": 600
+    },
+    "title": {
+      "color": "#1d1d1b",
+      "fontSize": 14,
+      "fontWeight": 600,
+      "anchor": "start",
+      "subtitleColor": "#52514e"
+    }
+  }
+}

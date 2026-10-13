@@ -1,0 +1,220 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "When most whales have been reported at popular whale-watching spots (middle 80% of reports), 2016-2025. Dot = busiest month.",
+  "data": {
+    "url": "data/c12_planner.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "lat": "number",
+        "records": "number",
+        "start_month": "number",
+        "end_month": "number",
+        "peak_month": "number"
+      }
+    }
+  },
+  "width": 520,
+  "height": {
+    "step": 26
+  },
+  "transform": [
+    {
+      "calculate": "datum.site + ', ' + datum.state",
+      "as": "place"
+    },
+    {
+      "calculate": "datum.end_month + 1",
+      "as": "end_edge"
+    },
+    {
+      "calculate": "datum.peak_month + 0.5",
+      "as": "peak_mid"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "place",
+      "type": "nominal",
+      "title": null,
+      "sort": {
+        "field": "lat",
+        "order": "descending"
+      },
+      "axis": {
+        "labelFontSize": 12,
+        "labelColor": "#1d1d1b",
+        "ticks": false,
+        "domain": false
+      }
+    },
+    "opacity": {
+      "condition": {
+        "param": "pickSp",
+        "value": 1
+      },
+      "value": 0.15
+    },
+    "tooltip": [
+      {
+        "field": "place",
+        "title": "Place"
+      },
+      {
+        "field": "species_name",
+        "title": "Species"
+      },
+      {
+        "field": "start_name",
+        "title": "Season starts"
+      },
+      {
+        "field": "end_name",
+        "title": "Season ends"
+      },
+      {
+        "field": "peak_name",
+        "title": "Busiest month"
+      },
+      {
+        "field": "records",
+        "title": "Reports",
+        "format": ","
+      }
+    ]
+  },
+  "layer": [
+    {
+      "params": [
+        {
+          "name": "pickSp",
+          "select": {
+            "type": "point",
+            "fields": [
+              "species_name"
+            ]
+          },
+          "bind": "legend"
+        }
+      ],
+      "mark": {
+        "type": "bar",
+        "cornerRadius": 4,
+        "height": {
+          "band": 0.55
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "start_month",
+          "type": "quantitative",
+          "title": null,
+          "scale": {
+            "domain": [
+              1,
+              13
+            ],
+            "nice": false
+          },
+          "axis": {
+            "values": [
+              1.5,
+              2.5,
+              3.5,
+              4.5,
+              5.5,
+              6.5,
+              7.5,
+              8.5,
+              9.5,
+              10.5,
+              11.5,
+              12.5
+            ],
+            "labelExpr": "['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][floor(datum.value) - 1]",
+            "grid": false,
+            "ticks": false,
+            "domain": false,
+            "orient": "top"
+          }
+        },
+        "x2": {
+          "field": "end_edge"
+        },
+        "color": {
+          "field": "species_name",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "Humpback Whale",
+              "Southern Right Whale"
+            ],
+            "range": [
+              "#2a78d6",
+              "#eb6834"
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal"
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 70,
+        "fill": "#ffffff",
+        "stroke": "#1d1d1b",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "x": {
+          "field": "peak_mid",
+          "type": "quantitative"
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Inter, system-ui, sans-serif",
+    "background": "transparent",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 500,
+      "gridColor": "#ecebe7",
+      "domainColor": "#cfcdc6",
+      "tickColor": "#cfcdc6"
+    },
+    "legend": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 600,
+      "symbolStrokeWidth": 0
+    },
+    "header": {
+      "labelColor": "#1d1d1b",
+      "titleColor": "#52514e",
+      "labelFontSize": 12,
+      "labelFontWeight": 600
+    },
+    "title": {
+      "color": "#1d1d1b",
+      "fontSize": 14,
+      "fontWeight": 600,
+      "anchor": "start",
+      "subtitleColor": "#52514e"
+    }
+  }
+}

@@ -1,0 +1,359 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Whale-watching hotspots: reports per half-degree square, 2016-2025. Circle area = number of reports.",
+  "width": 620,
+  "height": 500,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0,
+      0
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia-states.json",
+        "format": {
+          "type": "topojson",
+          "feature": "australia_states"
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.properties.name !== 'Macquarie Island' && datum.properties.name !== 'Lord Howe Island'"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e9e7e2",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.8,
+        "tooltip": false
+      }
+    },
+    {
+      "data": {
+        "url": "data/c11_hotspots.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "lat": "number",
+            "lon": "number",
+            "records": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "calculate": "indexof([\"Humpback Whale\", \"Southern Right Whale\", \"Blue Whale\"], datum.top_species) >= 0 ? datum.top_species : 'Other whale'",
+          "as": "species_group"
+        }
+      ],
+      "params": [
+        {
+          "name": "pickSpecies",
+          "select": {
+            "type": "point",
+            "fields": [
+              "species_group"
+            ]
+          },
+          "bind": "legend"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "stroke": "#ffffff",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "records",
+          "type": "quantitative",
+          "title": "Reports",
+          "scale": {
+            "type": "sqrt",
+            "range": [
+              15,
+              1400
+            ]
+          },
+          "legend": {
+            "values": [
+              50,
+              500,
+              1500
+            ],
+            "orient": "bottom-left",
+            "symbolFillColor": "#c9c7c0"
+          }
+        },
+        "color": {
+          "field": "species_group",
+          "type": "nominal",
+          "title": "Most-reported species",
+          "scale": {
+            "domain": [
+              "Humpback Whale",
+              "Southern Right Whale",
+              "Other whale"
+            ],
+            "range": [
+              "#2a78d6",
+              "#eb6834",
+              "#9a988f"
+            ]
+          },
+          "legend": {
+            "orient": "top-left",
+            "symbolOpacity": 1
+          }
+        },
+        "order": {
+          "field": "records",
+          "sort": "descending"
+        },
+        "opacity": {
+          "condition": {
+            "param": "pickSpecies",
+            "value": 0.8
+          },
+          "value": 0.1
+        },
+        "tooltip": [
+          {
+            "field": "species_group",
+            "title": "Most-reported species"
+          },
+          {
+            "field": "records",
+            "title": "Reports",
+            "format": ","
+          },
+          {
+            "field": "lat",
+            "title": "Latitude",
+            "format": ".2f"
+          },
+          {
+            "field": "lon",
+            "title": "Longitude",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 153.25,
+            "lat": -25.25,
+            "text": "Hervey Bay"
+          },
+          {
+            "lon": 153.75,
+            "lat": -28.75,
+            "text": "Byron Bay"
+          },
+          {
+            "lon": 151.25,
+            "lat": -33.75,
+            "text": "Sydney"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 18,
+        "dy": 0,
+        "fontSize": 11,
+        "fontWeight": 600,
+        "fill": "#1d1d1b",
+        "lineHeight": 13,
+        "tooltip": false
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 114.25,
+            "lat": -21.75,
+            "text": "Exmouth"
+          },
+          {
+            "lon": 115.75,
+            "lat": -31.75,
+            "text": "Perth"
+          },
+          {
+            "lon": 115.25,
+            "lat": -34.25,
+            "text": "Augusta"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -18,
+        "dy": 0,
+        "fontSize": 11,
+        "fontWeight": 600,
+        "fill": "#1d1d1b",
+        "lineHeight": 13,
+        "tooltip": false
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 131.25,
+            "lat": -31.5,
+            "text": "Head of Bight"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dx": 0,
+        "dy": -30,
+        "fontSize": 11,
+        "fontWeight": 600,
+        "fill": "#1d1d1b",
+        "lineHeight": 13,
+        "tooltip": false
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 142.75,
+            "lat": -38.25,
+            "text": "Warrnambool"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dx": 0,
+        "dy": 26,
+        "fontSize": 11,
+        "fontWeight": 600,
+        "fill": "#1d1d1b",
+        "lineHeight": 13,
+        "tooltip": false
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Inter, system-ui, sans-serif",
+    "background": "transparent",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 500,
+      "gridColor": "#ecebe7",
+      "domainColor": "#cfcdc6",
+      "tickColor": "#cfcdc6"
+    },
+    "legend": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 600,
+      "symbolStrokeWidth": 0
+    },
+    "header": {
+      "labelColor": "#1d1d1b",
+      "titleColor": "#52514e",
+      "labelFontSize": 12,
+      "labelFontWeight": 600
+    },
+    "title": {
+      "color": "#1d1d1b",
+      "fontSize": 14,
+      "fontWeight": 600,
+      "anchor": "start",
+      "subtitleColor": "#52514e"
+    }
+  }
+}

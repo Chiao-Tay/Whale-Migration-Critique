@@ -1,0 +1,204 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Humpback reports by latitude band and month (share of each band's reports), 2016-2025. Dot = busiest month for that band.",
+  "data": {
+    "url": "data/c6_humpback_lat_month.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "lat_band": "number",
+        "month": "number",
+        "records": "number",
+        "band_total": "number",
+        "share_pct": "number"
+      }
+    }
+  },
+  "facet": {
+    "column": {
+      "field": "coast",
+      "type": "nominal",
+      "title": null,
+      "sort": [
+        "East coast",
+        "West coast"
+      ]
+    }
+  },
+  "resolve": {
+    "scale": {
+      "y": "independent"
+    }
+  },
+  "spec": {
+    "width": 290,
+    "height": {
+      "step": 18
+    },
+    "encoding": {
+      "x": {
+        "field": "month",
+        "type": "ordinal",
+        "title": null,
+        "scale": {
+          "domain": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        "axis": {
+          "labelExpr": "['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][datum.value - 1]",
+          "labelAngle": 0,
+          "ticks": false,
+          "domain": false,
+          "orient": "top"
+        }
+      },
+      "y": {
+        "field": "lat_band",
+        "type": "ordinal",
+        "sort": "descending",
+        "title": "Latitude (north at top)",
+        "axis": {
+          "labelExpr": "abs(datum.value) + '°S'",
+          "ticks": false,
+          "domain": false
+        }
+      }
+    },
+    "layer": [
+      {
+        "mark": {
+          "type": "rect",
+          "stroke": "#fcfcfb",
+          "strokeWidth": 1.5,
+          "cornerRadius": 2
+        },
+        "encoding": {
+          "color": {
+            "field": "share_pct",
+            "type": "quantitative",
+            "title": "% of that band's reports",
+            "scale": {
+              "domain": [
+                0,
+                50
+              ],
+              "clamp": true,
+              "range": [
+                "#cde2fb",
+                "#0d366b"
+              ]
+            },
+            "legend": {
+              "orient": "bottom",
+              "direction": "horizontal",
+              "gradientLength": 200
+            }
+          },
+          "tooltip": [
+            {
+              "field": "coast",
+              "title": "Coast"
+            },
+            {
+              "field": "lat_band",
+              "title": "Latitude band (°)"
+            },
+            {
+              "field": "month_name",
+              "title": "Month"
+            },
+            {
+              "field": "share_pct",
+              "title": "% of band's reports",
+              "format": ".1f"
+            },
+            {
+              "field": "records",
+              "title": "Reports",
+              "format": ","
+            }
+          ]
+        }
+      },
+      {
+        "transform": [
+          {
+            "joinaggregate": [
+              {
+                "op": "max",
+                "field": "share_pct",
+                "as": "max_share"
+              }
+            ],
+            "groupby": [
+              "coast",
+              "lat_band"
+            ]
+          },
+          {
+            "filter": "datum.share_pct === datum.max_share"
+          }
+        ],
+        "mark": {
+          "type": "point",
+          "filled": true,
+          "fill": "#ffffff",
+          "stroke": "#1d1d1b",
+          "strokeWidth": 1.2,
+          "size": 28,
+          "tooltip": false
+        }
+      }
+    ]
+  },
+  "config": {
+    "font": "Inter, system-ui, sans-serif",
+    "background": "transparent",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 500,
+      "gridColor": "#ecebe7",
+      "domainColor": "#cfcdc6",
+      "tickColor": "#cfcdc6"
+    },
+    "legend": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 600,
+      "symbolStrokeWidth": 0
+    },
+    "header": {
+      "labelColor": "#1d1d1b",
+      "titleColor": "#52514e",
+      "labelFontSize": 12,
+      "labelFontWeight": 600
+    },
+    "title": {
+      "color": "#1d1d1b",
+      "fontSize": 14,
+      "fontWeight": 600,
+      "anchor": "start",
+      "subtitleColor": "#52514e"
+    }
+  }
+}

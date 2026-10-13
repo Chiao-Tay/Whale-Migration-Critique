@@ -1,0 +1,190 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Humpback whales caught at Australian whaling stations per year, 1925-1963.",
+  "data": {
+    "url": "data/c8_whaling_catches.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "catches": "number"
+      }
+    }
+  },
+  "width": 620,
+  "height": 260,
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "size": 9,
+        "cornerRadiusTopLeft": 2,
+        "cornerRadiusTopRight": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "title": null,
+          "scale": {
+            "domain": [
+              1924,
+              1980
+            ],
+            "nice": false
+          },
+          "axis": {
+            "format": "d",
+            "values": [
+              1925,
+              1930,
+              1935,
+              1940,
+              1945,
+              1950,
+              1955,
+              1960,
+              1965
+            ],
+            "grid": false
+          }
+        },
+        "y": {
+          "field": "catches",
+          "type": "quantitative",
+          "stack": true,
+          "title": "Humpbacks caught",
+          "axis": {
+            "tickCount": 5
+          }
+        },
+        "color": {
+          "field": "coast",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "West coast (WA)",
+              "East coast (QLD, NSW, Norfolk Is.)"
+            ],
+            "range": [
+              "#6250d6",
+              "#eda100"
+            ]
+          },
+          "legend": {
+            "orient": "top-left",
+            "direction": "vertical",
+            "labelLimit": 320
+          }
+        },
+        "order": {
+          "field": "coast",
+          "sort": "descending"
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "title": "Year"
+          },
+          {
+            "field": "coast",
+            "title": "Coast"
+          },
+          {
+            "field": "catches",
+            "title": "Humpbacks caught",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 1930,
+            "y": 120,
+            "text": "No catches recorded 1929–1946"
+          },
+          {
+            "year": 1963.6,
+            "y": 900,
+            "text": [
+              "1962–63: catches collapse.",
+              "Humpbacks were down to a",
+              "few per cent of their numbers",
+              "before whaling. Hunting them",
+              "was banned in 1963."
+            ]
+          },
+          {
+            "year": 1954,
+            "y": 2160,
+            "text": [
+              "Peak: 2,039 caught in 1954"
+            ]
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fill": "#52514e",
+        "align": "left",
+        "lineHeight": 14
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Inter, system-ui, sans-serif",
+    "background": "transparent",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 500,
+      "gridColor": "#ecebe7",
+      "domainColor": "#cfcdc6",
+      "tickColor": "#cfcdc6"
+    },
+    "legend": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 600,
+      "symbolStrokeWidth": 0
+    },
+    "header": {
+      "labelColor": "#1d1d1b",
+      "titleColor": "#52514e",
+      "labelFontSize": 12,
+      "labelFontWeight": 600
+    },
+    "title": {
+      "color": "#1d1d1b",
+      "fontSize": 14,
+      "fontWeight": 600,
+      "anchor": "start",
+      "subtitleColor": "#52514e"
+    }
+  }
+}

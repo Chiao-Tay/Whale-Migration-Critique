@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Humpback Highway</title>
+  <meta name="description" content="A data story about the whales that migrate along Australia's coasts.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Vega, Vega-Lite and Vega-Embed -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.30.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.21.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0"></script>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="kicker">A data story about Australia's whales</p>
+    <h1>The Humpback Highway</h1>
+    <p class="lede">Every winter, whales travel thousands of kilometres along our coast. Where do they go, when can you see them, and how did they come back from the brink?</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Story sections">
+  <ol>
+    <li><a href="#travellers"><span>1</span>Meet the travellers</a></li>
+    <li><a href="#highway"><span>2</span>The highway</a></li>
+    <li><a href="#wave"><span>3</span>The migration wave</a></li>
+    <li><a href="#hunt"><span>4</span>Hunted to the brink</a></li>
+    <li><a href="#eyes"><span>5</span>Eyes on the water</a></li>
+    <li><a href="#yourturn"><span>6</span>Your turn</a></li>
+  </ol>
+</nav>
+
+<main>
+
+  <!-- ===================== 1. MEET THE TRAVELLERS ===================== -->
+  <section class="chapter" id="travellers">
+    <div class="chapter-inner">
+      <div class="chapter-head">
+        <p class="chapter-num">Chapter 1</p>
+        <h2>Meet the travellers</h2>
+        <p class="takeaway">Two species make up almost every whale report, and each keeps its own calendar.</p>
+      </div>
+
+      <div class="split">
+        <div class="prose">
+          <p>Between 2016 and 2025, Australians logged <strong>14,019 reports</strong> of baleen whales. These are the giant filter-feeders that eat krill and small fish.</p>
+          <p>Ten species were reported. Two dominate: <strong>humpback whales</strong> and <strong>southern right whales</strong> make up nearly 98% of reports.</p>
+          <p>Throughout this story, <span class="chip humpback"></span>humpbacks are blue and <span class="chip srw"></span>southern right whales are orange.</p>
+        </div>
+        <figure class="chart">
+          <div class="chart-head">
+            <h3>Two species dominate</h3>
+            <p>Reports per species, 2016–2025</p>
+          </div>
+          <div id="c2" class="vis"></div>
+          <figcaption>Source: Atlas of Living Australia. One report is one recorded sighting; the same whale can be reported many times.</figcaption>
+        </figure>
+      </div>
+
+      <div class="prose">
+        <p>Each species visits at a different time of year. Humpbacks are reported mostly from <strong>June to October</strong>.</p>
+        <p>Southern right whales are packed into <strong>July and August</strong>, which hold 70% of their reports. The few <span class="chip blue"></span>blue whale reports cluster in <strong>May and June</strong>.</p>
+      </div>
+
+      <figure class="chart">
+        <div class="chart-head">
+          <h3>A whale calendar</h3>
+          <p>Each slice is a month, with January at the top. Longer slices mean a bigger share of that species' reports.</p>
+        </div>
+        <div id="c1" class="vis"></div>
+        <figcaption><span class="how">How to read:</span> hover over a month to compare it across species. The faint ring marks a 25% share. Blue whales have only 150 reports, so their pattern is less certain. Source: Atlas of Living Australia, 2016–2025.</figcaption>
+      </figure>
+
+      <div class="prose">
+        <p>Whales turn up off every state. <strong>New South Wales</strong> and <strong>Victoria</strong> recorded the most species, eight each. The Northern Territory recorded just two.</p>
+      </div>
+
+      <figure class="chart">
+        <div class="chart-head">
+          <h3>Every state's waters host whales</h3>
+          <p>Number of whale species reported off each state, 2016–2025</p>
+        </div>
+        <div id="c3" class="vis"></div>
+        <figcaption><span class="how">How to read:</span> darker states had more species reported; hover for the species list. Reports at sea count for the state with the nearest coast. The ACT has no coast. One rare sighting adds a species, so this shows species <em>recorded</em>, not species living there. Sources: Atlas of Living Australia; Natural Earth.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== 2. THE HIGHWAY ===================== -->
+  <section class="chapter" id="highway">
+    <div class="chapter-inner">
+      <div class="chapter-head">
+        <p class="chapter-num">Chapter 2</p>
+        <h2>The great whale highway</h2>
+        <p class="takeaway">Whales follow a coastal highway that fills up in winter and empties in summer.</p>
+      </div>
+      <div class="prose">
+        <p>Whales don't use the ocean evenly. The government has mapped <strong>51 Biologically Important Areas</strong> for humpback, southern right, blue and sperm whales.</p>
+        <p>These are stretches of sea where whales migrate, feed, rest or raise calves. Together they trace a highway around almost the whole coast.</p>
+      </div>
+
+      <figure class="chart">
+        <div class="chart-head">
+          <h3>Where whales do what</h3>
+          <p>Biologically Important Areas for whales, coloured by behaviour</p>
+        </div>
+        <div id="c4" class="vis"></div>
+        <figcaption><span class="how">How to use:</span> pick a species from the menu, or click a behaviour in the legend to show only those areas (shift-click to add more). Hover over an area to see when whales use it. Source: Department of Climate Change, Energy, the Environment and Water (DCCEEW), Biologically Important Areas for protected marine species.</figcaption>
+      </figure>
+
+      <div class="prose">
+        <p>The reports show the highway filling and emptying. In January and February there were just <strong>29 reports</strong> nationwide; the whales are away feeding in Antarctic waters.</p>
+        <p>By July and August, reports climb to <strong>6,770</strong>.</p>
+      </div>
+
+      <figure class="chart">
+        <div class="chart-head">
+          <h3>The highway fills up in winter</h3>
+          <p>Whale reports per 1° square (about 100 km across), in two-month periods, 2016–2025</p>
+        </div>
+        <div id="c5" class="vis"></div>
+        <figcaption><span class="how">How to read:</span> darker squares had more reports. Each step on the colour scale is ten times the last, so a few busy spots don't hide everywhere else. Source: Atlas of Living Australia.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== 3. THE MIGRATION WAVE ===================== -->
+  <section class="chapter" id="wave">
+    <div class="chapter-inner">
+      <div class="chapter-head">
+        <p class="chapter-num">Chapter 3</p>
+        <h2>Following the migration wave</h2>
+        <p class="takeaway">The best month to see a humpback depends on where you stand.</p>
+      </div>
+      <div class="prose">
+        <p>Humpbacks swim north in early winter to breed and give birth in warm water. In spring they head back south to Antarctica.</p>
+        <p>So the busiest month <strong>shifts along the coast</strong>, like a wave moving north and then back again.</p>
+      </div>
+
+      <figure class="chart">
+        <div class="chart-head">
+          <h3>The wave moves along the coast</h3>
+          <p>Humpback reports by latitude and month. Each row is one stretch of coast; the white dot marks its busiest month.</p>
+        </div>
+        <div id="c6" class="vis"></div>
+        <figcaption><span class="how">How to read:</span> each row adds up to 100%. On the east coast, the far north is busiest in August. Around Sydney (32–35°S) the dots sit in June, as whales pass heading north. In the far south they sit in September–October, as whales return. Source: Atlas of Living Australia, 2016–2025.</figcaption>
+      </figure>
+
+      <div class="prose">
+        <p>Zoom in on seven east-coast spots and the two directions appear. <strong>Sydney</strong> has two peaks: whales heading north in June and July, then south in September and October.</p>
+        <p>At <strong>Eden</strong>, 52% of reports come in October, as mothers and calves head south. <strong>Hervey Bay</strong> peaks in August, when whales rest in its sheltered waters.</p>
+      </div>
+
+      <figure class="chart">
+        <div class="chart-head">
+          <h3>When humpbacks pass seven east-coast spots</h3>
+          <p>Share of each site's humpback reports by month, north at the top (total reports in brackets)</p>
+        </div>
+        <div id="c7" class="vis"></div>
+        <figcaption><span class="how">How to read:</span> taller peaks mean a bigger share of that site's reports. Hover to see the exact share. Source: Atlas of Living Australia, 2016–2025.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== 4. THE HUNT ===================== -->
+  <section class="chapter" id="hunt">
+    <div class="chapter-inner">
+      <div class="chapter-head">
+        <p class="chapter-num">Chapter 4</p>
+        <h2>Hunted to the brink</h2>
+        <p class="takeaway">The whales we watch today are survivors of an industry that nearly wiped them out.</p>
+      </div>
+      <div class="prose">
+        <p>Whaling stations once operated on both coasts. Their records hold <strong>23,057 humpbacks</strong> caught between 1925 and 1963.</p>
+      </div>
+
+      <div class="stats">
+        <div><span class="big-number">2,039</span>humpbacks caught in 1954, the peak year</div>
+        <div><span class="big-number">91</span>caught in 1963, the year humpback hunting was banned</div>
+      </div>
+
+      <figure class="chart">
+        <div class="chart-head">
+          <h3>The hunt</h3>
+          <p>Humpback whales caught at Australian whaling stations each year</p>
+        </div>
+        <div id="c8" class="vis"></div>
+        <figcaption><span class="how">How to read:</span> each bar is one year, split by coast; hover for exact numbers. Sources: Atlas of Living Australia, "Historic whale catch data from Australian whaling stations (1925–1978)"; ban and population figures from DCCEEW, <a href="https://www.agriculture.gov.au/sites/default/files/documents/eastern-humpback-whales.pdf">Eastern humpback whales</a>.</figcaption>
+      </figure>
+
+      <div class="prose">
+        <p>Why the sudden drop? Catches fell from <strong>1,483 in 1961</strong> to <strong>91 in 1963</strong> because there were too few whales left to find.</p>
+        <p>Over-hunting cut humpbacks to an estimated <strong>3.5–5%</strong> of their numbers before whaling. In 1963 the International Whaling Commission banned humpback hunting in the Southern Hemisphere.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 5. EYES ON THE WATER ===================== -->
+  <section class="chapter" id="eyes">
+    <div class="chapter-inner">
+      <div class="chapter-head">
+        <p class="chapter-num">Chapter 5</p>
+        <h2>Eyes on the water</h2>
+        <p class="takeaway">Today, ordinary people with phones record most of what we know.</p>
+      </div>
+
+      <div class="split">
+        <div class="prose">
+          <p>Since 2016, <strong>56% of whale reports</strong> came through <span class="chip citizen"></span>citizen-science apps such as iNaturalist and Happywhale.</p>
+          <p>Another 39% came through <span class="chip atlas"></span>government wildlife atlases, which also collect many reports from the public.</p>
+          <p>Scientific surveys and museums, shown in grey, add the rest.</p>
+        </div>
+        <figure class="chart">
+          <div class="chart-head">
+            <h3>Who reports whales?</h3>
+            <p>Each square is 1% of reports, 2016–2025</p>
+          </div>
+          <div id="c9" class="vis"></div>
+          <figcaption><span class="how">How to use:</span> click a source in the legend to highlight it. Source: Atlas of Living Australia.</figcaption>
+        </figure>
+      </div>
+
+      <div class="prose">
+        <p>The boom is recent. In 2000, just <strong>3 reports</strong> came through citizen-science apps. In 2023 there were <strong>1,876</strong>.</p>
+        <p>This matters when reading the earlier charts. More reports can mean more whales, but also more people looking. That's why they compare <strong>shares</strong> of reports, not raw totals.</p>
+      </div>
+
+      <figure class="chart">
+        <div class="chart-head">
+          <h3>The citizen-science boom</h3>
+          <p>Whale reports per year, by how they were reported</p>
+        </div>
+        <div id="c10" class="vis"></div>
+        <figcaption>Hover for exact numbers. Source: Atlas of Living Australia, 2000–2025.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== 6. YOUR TURN ===================== -->
+  <section class="chapter" id="yourturn">
+    <div class="chapter-inner">
+      <div class="chapter-head">
+        <p class="chapter-num">Chapter 6</p>
+        <h2>Your turn: witness the journey</h2>
+        <p class="takeaway">Pick a spot, pick a month, and add your own sighting to the record.</p>
+      </div>
+      <div class="prose">
+        <p>Some spots stand out. The <strong>Head of Bight</strong> in South Australia is the hotspot for southern right whales.</p>
+        <p><strong>Hervey Bay</strong>, <strong>Byron Bay</strong> and <strong>Augusta</strong> are humpback favourites.</p>
+      </div>
+
+      <figure class="chart">
+        <div class="chart-head">
+          <h3>Whale-watching hotspots</h3>
+          <p>Reports per half-degree square (about 50 km across), 2016–2025</p>
+        </div>
+        <div id="c11" class="vis"></div>
+        <figcaption><span class="how">How to use:</span> bigger circles mean more reports; colour shows the most-reported species. Click a species in the legend to highlight it. Only squares with 20 or more reports are shown. Source: Atlas of Living Australia.</figcaption>
+      </figure>
+
+      <div class="prose">
+        <p>Plan your trip with the chart below. Bars show the months that held most reports at each spot over the past ten years.</p>
+        <p>The white dot marks the busiest month. Spotted a whale? Upload a photo to a citizen-science app and become part of the story.</p>
+      </div>
+
+      <figure class="chart">
+        <div class="chart-head">
+          <h3>When to go</h3>
+          <p>Months holding the middle 80% of reports at popular spots, 2016–2025</p>
+        </div>
+        <div id="c12" class="vis"></div>
+        <figcaption>These are past reporting patterns, not guarantees. Keep a respectful distance and follow the <a href="https://ablis.business.gov.au/service/ag/australian-national-guidelines-for-whale-and-dolphin-watching-2017/31426">Australian National Guidelines for Whale and Dolphin Watching</a>. Source: Atlas of Living Australia.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="inner">
+    <h2>About this page</h2>
+    <p><strong>Author:</strong> [Your name] · FIT3179 Data Visualisation 2 · Monash University · [Date]</p>
+
+    <h3>Data sources</h3>
+    <ul>
+      <li>Atlas of Living Australia (2026). Occurrence records for baleen whales (Mysticeti), downloaded 13 October 2026. <a href="https://doi.org/10.26197/ala.df33528c-b498-46ab-ad3d-027674a40fe1">doi.org/10.26197/ala.df33528c-b498-46ab-ad3d-027674a40fe1</a></li>
+      <li>Department of Climate Change, Energy, the Environment and Water (2025). <a href="https://fed.dcceew.gov.au/datasets/erin::biologically-important-areas-for-protected-marine-species">Biologically Important Areas for protected marine species</a>.</li>
+      <li>Natural Earth. <a href="https://www.naturalearthdata.com/downloads/10m-cultural-vectors/">Admin 1 – States, Provinces</a> (public domain).</li>
+      <li>Australian Government. <a href="https://www.agriculture.gov.au/sites/default/files/documents/eastern-humpback-whales.pdf">Eastern humpback whales</a> (whaling ban and population figures in Chapter 4).</li>
+    </ul>
+
+    <h3>Notes</h3>
+    <p>Reports are sightings logged by the public, scientists and agencies; they are not population counts. Reports outside Australian waters, reports without a month, and historical whaling records (used only in Chapter 4) were removed. Maps use an equal-area conic projection centred on Australia, so areas are shown at their true relative size. Charts built with <a href="https://vega.github.io/vega-lite/">Vega-Lite</a>.</p>
+
+    <h3>Use of AI</h3>
+    <p>[Describe how you used AI tools here, as the assignment requires.]</p>
+  </div>
+</footer>
+
+<script>
+  const opts = { actions: false, renderer: "svg" };
+  const charts = ["c1_radial_calendar", "c2_species_totals", "c3_species_by_state", "c4_important_areas",
+                  "c5_grid_by_period", "c6_migration_wave", "c7_ridgeline", "c8_the_hunt",
+                  "c9_who_reports", "c10_citizen_science_boom", "c11_hotspots", "c12_planner"];
+  charts.forEach(name => {
+    const id = "#" + name.split("_")[0];
+    vegaEmbed(id, "specs/" + name + ".vg.json", opts).catch(err => console.error(name, err));
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,291 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Share of each species' reports by month, 2016-2025. Each slice is a month (January at the top, clockwise); slice length = share of that species' reports.",
+  "data": {
+    "url": "data/c1_species_by_month.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "month": "number",
+        "records": "number",
+        "share_pct": "number",
+        "species_total": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datum.month - 1",
+      "as": "t0"
+    },
+    {
+      "calculate": "datum.month",
+      "as": "t1"
+    },
+    {
+      "calculate": "datum.month - 0.5",
+      "as": "tmid"
+    },
+    {
+      "calculate": "datum.species_name + ' · ' + format(datum.species_total, ',') + ' reports'",
+      "as": "panel"
+    }
+  ],
+  "facet": {
+    "column": {
+      "field": "panel",
+      "type": "nominal",
+      "title": null,
+      "sort": {
+        "field": "species_total",
+        "order": "descending"
+      },
+      "header": {
+        "labelFontSize": 12
+      }
+    }
+  },
+  "spec": {
+    "width": 200,
+    "height": 200,
+    "layer": [
+      {
+        "mark": {
+          "type": "arc",
+          "fill": null,
+          "stroke": "#e3e1db",
+          "strokeWidth": 1,
+          "tooltip": false,
+          "radius": 52
+        },
+        "encoding": {
+          "theta": {
+            "field": "t0",
+            "type": "quantitative",
+            "scale": {
+              "domain": [
+                0,
+                12
+              ],
+              "range": [
+                0,
+                6.283185
+              ]
+            }
+          },
+          "theta2": {
+            "field": "t1"
+          }
+        }
+      },
+      {
+        "params": [
+          {
+            "name": "hoverMonth",
+            "select": {
+              "type": "point",
+              "fields": [
+                "month"
+              ],
+              "on": "pointerover",
+              "clear": "pointerout"
+            }
+          }
+        ],
+        "mark": {
+          "type": "arc",
+          "padAngle": 0.02,
+          "cornerRadius": 2,
+          "stroke": "#fcfcfb",
+          "strokeWidth": 1
+        },
+        "encoding": {
+          "theta": {
+            "field": "t0",
+            "type": "quantitative",
+            "scale": {
+              "domain": [
+                0,
+                12
+              ],
+              "range": [
+                0,
+                6.283185
+              ]
+            }
+          },
+          "theta2": {
+            "field": "t1"
+          },
+          "radius": {
+            "field": "share_pct",
+            "type": "quantitative",
+            "scale": {
+              "type": "sqrt",
+              "zero": true,
+              "domain": [
+                0,
+                75
+              ],
+              "range": [
+                4,
+                86
+              ]
+            }
+          },
+          "color": {
+            "field": "species_name",
+            "type": "nominal",
+            "legend": null,
+            "scale": {
+              "domain": [
+                "Humpback Whale",
+                "Southern Right Whale",
+                "Blue Whale"
+              ],
+              "range": [
+                "#2a78d6",
+                "#eb6834",
+                "#1baf7a"
+              ]
+            }
+          },
+          "opacity": {
+            "condition": {
+              "param": "hoverMonth",
+              "empty": true,
+              "value": 1
+            },
+            "value": 0.3
+          },
+          "tooltip": [
+            {
+              "field": "species_name",
+              "title": "Species"
+            },
+            {
+              "field": "month_name",
+              "title": "Month"
+            },
+            {
+              "field": "share_pct",
+              "title": "% of this species' reports",
+              "format": ".1f"
+            },
+            {
+              "field": "records",
+              "title": "Reports",
+              "format": ","
+            }
+          ]
+        }
+      },
+      {
+        "transform": [
+          {
+            "joinaggregate": [
+              {
+                "op": "max",
+                "field": "share_pct",
+                "as": "max_share"
+              }
+            ],
+            "groupby": [
+              "species_name"
+            ]
+          },
+          {
+            "filter": "datum.share_pct === datum.max_share"
+          },
+          {
+            "calculate": "'Busiest month: ' + datum.month_name + ' (' + format(datum.share_pct, '.0f') + '%)'",
+            "as": "peak_label"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "fontSize": 11,
+          "fontWeight": 600,
+          "fill": "#1d1d1b",
+          "tooltip": false
+        },
+        "encoding": {
+          "x": {
+            "value": 100
+          },
+          "y": {
+            "value": 222
+          },
+          "text": {
+            "field": "peak_label"
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "radius": 99,
+          "fontSize": 10,
+          "fill": "#8a8984"
+        },
+        "encoding": {
+          "theta": {
+            "field": "tmid",
+            "type": "quantitative",
+            "scale": {
+              "domain": [
+                0,
+                12
+              ],
+              "range": [
+                0,
+                6.283185
+              ]
+            }
+          },
+          "text": {
+            "field": "month_name"
+          }
+        }
+      }
+    ]
+  },
+  "config": {
+    "font": "Inter, system-ui, sans-serif",
+    "background": "transparent",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 500,
+      "gridColor": "#ecebe7",
+      "domainColor": "#cfcdc6",
+      "tickColor": "#cfcdc6"
+    },
+    "legend": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 600,
+      "symbolStrokeWidth": 0
+    },
+    "header": {
+      "labelColor": "#1d1d1b",
+      "titleColor": "#52514e",
+      "labelFontSize": 12,
+      "labelFontWeight": 600
+    },
+    "title": {
+      "color": "#1d1d1b",
+      "fontSize": 14,
+      "fontWeight": 600,
+      "anchor": "start",
+      "subtitleColor": "#52514e"
+    }
+  }
+}

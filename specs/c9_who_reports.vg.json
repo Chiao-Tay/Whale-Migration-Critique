@@ -1,0 +1,133 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Who reported whales, 2016-2025. Each square is 1% of reports.",
+  "data": {
+    "url": "data/c9_sources_waffle.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "square": "number",
+        "col": "number",
+        "row": "number",
+        "source_pct": "number",
+        "source_records": "number"
+      }
+    }
+  },
+  "width": 260,
+  "height": 260,
+  "params": [
+    {
+      "name": "pickSource",
+      "select": {
+        "type": "point",
+        "fields": [
+          "source"
+        ]
+      },
+      "bind": "legend"
+    }
+  ],
+  "mark": {
+    "type": "square",
+    "size": 380,
+    "cornerRadius": 3
+  },
+  "encoding": {
+    "x": {
+      "field": "col",
+      "type": "ordinal",
+      "axis": null
+    },
+    "y": {
+      "field": "row",
+      "type": "ordinal",
+      "axis": null
+    },
+    "color": {
+      "field": "source",
+      "type": "nominal",
+      "title": "Reported through",
+      "scale": {
+        "domain": [
+          "Citizen science apps",
+          "Government wildlife atlases",
+          "Scientific surveys",
+          "Museum collections"
+        ],
+        "range": [
+          "#6250d6",
+          "#eda100",
+          "#7c8a99",
+          "#c9c7c0"
+        ]
+      },
+      "legend": {
+        "orient": "right",
+        "labelLimit": 260,
+        "labelExpr": "{'Citizen science apps': 'Citizen science apps · 56%', 'Government wildlife atlases': 'Government wildlife atlases · 39%', 'Scientific surveys': 'Scientific surveys · 4%', 'Museum collections': 'Museum collections · 1%'}[datum.label]"
+      }
+    },
+    "opacity": {
+      "condition": {
+        "param": "pickSource",
+        "value": 1
+      },
+      "value": 0.15
+    },
+    "tooltip": [
+      {
+        "field": "source",
+        "title": "Source"
+      },
+      {
+        "field": "source_pct",
+        "title": "% of reports",
+        "format": ".1f"
+      },
+      {
+        "field": "source_records",
+        "title": "Reports",
+        "format": ","
+      }
+    ]
+  },
+  "config": {
+    "font": "Inter, system-ui, sans-serif",
+    "background": "transparent",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 500,
+      "gridColor": "#ecebe7",
+      "domainColor": "#cfcdc6",
+      "tickColor": "#cfcdc6"
+    },
+    "legend": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 600,
+      "symbolStrokeWidth": 0
+    },
+    "header": {
+      "labelColor": "#1d1d1b",
+      "titleColor": "#52514e",
+      "labelFontSize": 12,
+      "labelFontWeight": 600
+    },
+    "title": {
+      "color": "#1d1d1b",
+      "fontSize": 14,
+      "fontWeight": 600,
+      "anchor": "start",
+      "subtitleColor": "#52514e"
+    }
+  }
+}

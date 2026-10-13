@@ -1,0 +1,37 @@
+species_name,month,records,share_pct,month_name,species_total
+Humpback Whale,1,14,0.2,Jan,9261
+Humpback Whale,2,7,0.1,Feb,9261
+Humpback Whale,3,18,0.2,Mar,9261
+Humpback Whale,4,17,0.2,Apr,9261
+Humpback Whale,5,122,1.3,May,9261
+Humpback Whale,6,1273,13.7,Jun,9261
+Humpback Whale,7,1510,16.3,Jul,9261
+Humpback Whale,8,2107,22.8,Aug,9261
+Humpback Whale,9,2329,25.1,Sep,9261
+Humpback Whale,10,1574,17.0,Oct,9261
+Humpback Whale,11,261,2.8,Nov,9261
+Humpback Whale,12,29,0.3,Dec,9261
+Southern Right Whale,1,1,0.0,Jan,4409
+Southern Right Whale,2,0,0.0,Feb,4409
+Southern Right Whale,3,0,0.0,Mar,4409
+Southern Right Whale,4,5,0.1,Apr,4409
+Southern Right Whale,5,45,1.0,May,4409
+Southern Right Whale,6,425,9.6,Jun,4409
+Southern Right Whale,7,1378,31.3,Jul,4409
+Southern Right Whale,8,1709,38.8,Aug,4409
+Southern Right Whale,9,802,18.2,Sep,4409
+Southern Right Whale,10,39,0.9,Oct,4409
+Southern Right Whale,11,4,0.1,Nov,4409
+Southern Right Whale,12,1,0.0,Dec,4409
+Blue Whale,1,0,0.0,Jan,150
+Blue Whale,2,1,0.7,Feb,150
+Blue Whale,3,0,0.0,Mar,150
+Blue Whale,4,13,8.7,Apr,150
+Blue Whale,5,65,43.3,May,150
+Blue Whale,6,45,30.0,Jun,150
+Blue Whale,7,2,1.3,Jul,150
+Blue Whale,8,1,0.7,Aug,150
+Blue Whale,9,2,1.3,Sep,150
+Blue Whale,10,11,7.3,Oct,150
+Blue Whale,11,2,1.3,Nov,150
+Blue Whale,12,8,5.3,Dec,150

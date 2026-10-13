@@ -1,0 +1,293 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Whale reports per year by how they were reported, 2000-2025.",
+  "width": 620,
+  "height": 280,
+  "layer": [
+    {
+      "data": {
+        "url": "data/c10_sources_by_year.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "year": "number",
+            "records": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "calculate": "indexof([\"Citizen science apps\", \"Government wildlife atlases\", \"Scientific surveys\", \"Museum collections\"], datum.source)",
+          "as": "src_order"
+        }
+      ],
+      "mark": {
+        "type": "area",
+        "interpolate": "monotone",
+        "fillOpacity": 0.9,
+        "stroke": "#fcfcfb",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "title": null,
+          "scale": {
+            "domain": [
+              2000,
+              2025
+            ],
+            "nice": false
+          },
+          "axis": {
+            "format": "d",
+            "grid": false
+          }
+        },
+        "y": {
+          "field": "records",
+          "type": "quantitative",
+          "stack": true,
+          "title": "Reports per year"
+        },
+        "color": {
+          "field": "source",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "Citizen science apps",
+              "Government wildlife atlases",
+              "Scientific surveys",
+              "Museum collections"
+            ],
+            "range": [
+              "#6250d6",
+              "#eda100",
+              "#7c8a99",
+              "#c9c7c0"
+            ]
+          },
+          "legend": {
+            "orient": "top-right",
+            "direction": "vertical"
+          }
+        },
+        "order": {
+          "field": "src_order"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "data/c10_sources_by_year.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "year": "number",
+            "records": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "calculate": "indexof([\"Citizen science apps\", \"Government wildlife atlases\", \"Scientific surveys\", \"Museum collections\"], datum.source)",
+          "as": "src_order"
+        }
+      ],
+      "params": [
+        {
+          "name": "hoverYear",
+          "select": {
+            "type": "point",
+            "fields": [
+              "year"
+            ],
+            "on": "pointerover",
+            "nearest": true,
+            "clear": "pointerout"
+          }
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 30
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "title": null,
+          "scale": {
+            "domain": [
+              2000,
+              2025
+            ],
+            "nice": false
+          },
+          "axis": {
+            "format": "d",
+            "grid": false
+          }
+        },
+        "y": {
+          "field": "records",
+          "type": "quantitative",
+          "stack": true,
+          "title": "Reports per year"
+        },
+        "color": {
+          "field": "source",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "Citizen science apps",
+              "Government wildlife atlases",
+              "Scientific surveys",
+              "Museum collections"
+            ],
+            "range": [
+              "#6250d6",
+              "#eda100",
+              "#7c8a99",
+              "#c9c7c0"
+            ]
+          },
+          "legend": {
+            "orient": "top-right",
+            "direction": "vertical"
+          }
+        },
+        "order": {
+          "field": "src_order"
+        },
+        "opacity": {
+          "condition": {
+            "param": "hoverYear",
+            "empty": false,
+            "value": 1
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "title": "Year"
+          },
+          {
+            "field": "source",
+            "title": "Source"
+          },
+          {
+            "field": "records",
+            "title": "Reports",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 2010,
+            "y": 4700,
+            "text": "2009–12: one large Kimberley survey"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "fontSize": 11,
+        "fontWeight": 600,
+        "fill": "#1d1d1b"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 2023,
+            "y": 2450,
+            "text": "2023: 1,876 app reports, a record"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "fontSize": 11,
+        "fontWeight": 600,
+        "fill": "#1d1d1b"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text"
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Inter, system-ui, sans-serif",
+    "background": "transparent",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 500,
+      "gridColor": "#ecebe7",
+      "domainColor": "#cfcdc6",
+      "tickColor": "#cfcdc6"
+    },
+    "legend": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 600,
+      "symbolStrokeWidth": 0
+    },
+    "header": {
+      "labelColor": "#1d1d1b",
+      "titleColor": "#52514e",
+      "labelFontSize": 12,
+      "labelFontWeight": 600
+    },
+    "title": {
+      "color": "#1d1d1b",
+      "fontSize": 14,
+      "fontWeight": 600,
+      "anchor": "start",
+      "subtitleColor": "#52514e"
+    }
+  }
+}

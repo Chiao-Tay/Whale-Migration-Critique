@@ -1,0 +1,152 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Number of reports per whale species, 2016-2025.",
+  "data": {
+    "url": "data/c2_species_totals.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "records": "number"
+      }
+    }
+  },
+  "width": 520,
+  "height": {
+    "step": 24
+  },
+  "transform": [
+    {
+      "calculate": "indexof([\"Humpback Whale\", \"Southern Right Whale\", \"Blue Whale\"], datum.species_name) >= 0 ? datum.species_name : 'Other species'",
+      "as": "colour_group"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 4,
+        "height": {
+          "band": 0.7
+        }
+      },
+      "encoding": {
+        "y": {
+          "field": "species_name",
+          "type": "nominal",
+          "sort": "-x",
+          "title": null,
+          "axis": {
+            "labelFontSize": 12,
+            "labelColor": "#1d1d1b",
+            "ticks": false,
+            "domain": false
+          }
+        },
+        "x": {
+          "field": "records",
+          "type": "quantitative",
+          "title": "Reports, 2016–2025",
+          "axis": {
+            "grid": false,
+            "labels": false,
+            "ticks": false,
+            "domain": false,
+            "title": null
+          }
+        },
+        "color": {
+          "field": "colour_group",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": [
+              "Humpback Whale",
+              "Southern Right Whale",
+              "Blue Whale",
+              "Other species"
+            ],
+            "range": [
+              "#2a78d6",
+              "#eb6834",
+              "#1baf7a",
+              "#c9c7c0"
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "species_name",
+            "title": "Species"
+          },
+          {
+            "field": "records",
+            "title": "Reports",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "fontSize": 11,
+        "fill": "#52514e"
+      },
+      "encoding": {
+        "y": {
+          "field": "species_name",
+          "type": "nominal",
+          "sort": "-x"
+        },
+        "x": {
+          "field": "records",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "records",
+          "format": ","
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Inter, system-ui, sans-serif",
+    "background": "transparent",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 500,
+      "gridColor": "#ecebe7",
+      "domainColor": "#cfcdc6",
+      "tickColor": "#cfcdc6"
+    },
+    "legend": {
+      "labelColor": "#52514e",
+      "titleColor": "#52514e",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "titleFontWeight": 600,
+      "symbolStrokeWidth": 0
+    },
+    "header": {
+      "labelColor": "#1d1d1b",
+      "titleColor": "#52514e",
+      "labelFontSize": 12,
+      "labelFontWeight": 600
+    },
+    "title": {
+      "color": "#1d1d1b",
+      "fontSize": 14,
+      "fontWeight": 600,
+      "anchor": "start",
+      "subtitleColor": "#52514e"
+    }
+  }
+}
