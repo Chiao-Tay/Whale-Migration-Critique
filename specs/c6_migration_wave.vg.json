@@ -31,9 +31,9 @@
     }
   },
   "spec": {
-    "width": 290,
+    "width": 380,
     "height": {
-      "step": 18
+      "step": 22
     },
     "encoding": {
       "x": {
@@ -80,7 +80,7 @@
       {
         "mark": {
           "type": "rect",
-          "stroke": "#fcfcfb",
+          "stroke": "#e8eef4",
           "strokeWidth": 1.5,
           "cornerRadius": 2
         },
@@ -175,9 +175,9 @@
       "labelFontSize": 11,
       "titleFontSize": 11,
       "titleFontWeight": 500,
-      "gridColor": "#ecebe7",
-      "domainColor": "#cfcdc6",
-      "tickColor": "#cfcdc6"
+      "gridColor": "#d3dde8",
+      "domainColor": "#b9c6d3",
+      "tickColor": "#b9c6d3"
     },
     "legend": {
       "labelColor": "#52514e",

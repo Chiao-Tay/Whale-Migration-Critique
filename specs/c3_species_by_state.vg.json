@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Number of whale species recorded off each state, 2016-2025. Offshore reports are assigned to the nearest state's coast.",
-  "width": 560,
-  "height": 460,
+  "width": 760,
+  "height": 610,
   "projection": {
     "type": "conicEqualArea",
     "parallels": [
@@ -287,9 +287,9 @@
       "labelFontSize": 11,
       "titleFontSize": 11,
       "titleFontWeight": 500,
-      "gridColor": "#ecebe7",
-      "domainColor": "#cfcdc6",
-      "tickColor": "#cfcdc6"
+      "gridColor": "#d3dde8",
+      "domainColor": "#b9c6d3",
+      "tickColor": "#b9c6d3"
     },
     "legend": {
       "labelColor": "#52514e",

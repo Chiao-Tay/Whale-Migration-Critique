@@ -10,9 +10,9 @@
       }
     }
   },
-  "width": 520,
+  "width": 720,
   "height": {
-    "step": 24
+    "step": 26
   },
   "transform": [
     {
@@ -123,9 +123,9 @@
       "labelFontSize": 11,
       "titleFontSize": 11,
       "titleFontWeight": 500,
-      "gridColor": "#ecebe7",
-      "domainColor": "#cfcdc6",
-      "tickColor": "#cfcdc6"
+      "gridColor": "#d3dde8",
+      "domainColor": "#b9c6d3",
+      "tickColor": "#b9c6d3"
     },
     "legend": {
       "labelColor": "#52514e",

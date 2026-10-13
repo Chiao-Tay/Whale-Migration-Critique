@@ -11,13 +11,13 @@
       }
     }
   },
-  "width": 620,
-  "height": 260,
+  "width": 820,
+  "height": 320,
   "layer": [
     {
       "mark": {
         "type": "bar",
-        "size": 9,
+        "size": 12,
         "cornerRadiusTopLeft": 2,
         "cornerRadiusTopRight": 2
       },
@@ -161,9 +161,9 @@
       "labelFontSize": 11,
       "titleFontSize": 11,
       "titleFontWeight": 500,
-      "gridColor": "#ecebe7",
-      "domainColor": "#cfcdc6",
-      "tickColor": "#cfcdc6"
+      "gridColor": "#d3dde8",
+      "domainColor": "#b9c6d3",
+      "tickColor": "#b9c6d3"
     },
     "legend": {
       "labelColor": "#52514e",

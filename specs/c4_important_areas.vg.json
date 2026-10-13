@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Biologically Important Areas for whales (DCCEEW). Pick a species or click a behaviour in the legend.",
-  "width": 640,
-  "height": 500,
+  "width": 860,
+  "height": 660,
   "projection": {
     "type": "conicEqualArea",
     "parallels": [
@@ -287,9 +287,9 @@
       "labelFontSize": 11,
       "titleFontSize": 11,
       "titleFontWeight": 500,
-      "gridColor": "#ecebe7",
-      "domainColor": "#cfcdc6",
-      "tickColor": "#cfcdc6"
+      "gridColor": "#d3dde8",
+      "domainColor": "#b9c6d3",
+      "tickColor": "#b9c6d3"
     },
     "legend": {
       "labelColor": "#52514e",

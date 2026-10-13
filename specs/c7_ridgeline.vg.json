@@ -41,8 +41,8 @@
     }
   },
   "spec": {
-    "width": 480,
-    "height": 38,
+    "width": 540,
+    "height": 44,
     "layer": [
       {
         "mark": {
@@ -96,8 +96,8 @@
                 55
               ],
               "range": [
-                38,
-                -20
+                44,
+                -24
               ]
             }
           }
@@ -165,7 +165,7 @@
       {
         "transform": [
           {
-            "calculate": "datum.site === 'Sydney' && datum.month === 6 ? 'heading north' : datum.site === 'Sydney' && datum.month === 10 ? 'heading south' : datum.site === 'Eden' && datum.month === 11 ? '← mothers and calves heading south' : datum.site === 'Hervey Bay' && datum.month === 8 ? 'resting stopover' : ''",
+            "calculate": "datum.site === 'Sydney' && datum.month === 6 ? 'heading north' : datum.site === 'Sydney' && datum.month === 10 ? 'heading south' : datum.site === 'Eden' && datum.month === 11 ? '← mothers and calves' : datum.site === 'Hervey Bay' && datum.month === 8 ? 'resting stopover' : ''",
             "as": "note"
           },
           {
@@ -211,9 +211,9 @@
       "labelFontSize": 11,
       "titleFontSize": 11,
       "titleFontWeight": 500,
-      "gridColor": "#ecebe7",
-      "domainColor": "#cfcdc6",
-      "tickColor": "#cfcdc6"
+      "gridColor": "#d3dde8",
+      "domainColor": "#b9c6d3",
+      "tickColor": "#b9c6d3"
     },
     "legend": {
       "labelColor": "#52514e",

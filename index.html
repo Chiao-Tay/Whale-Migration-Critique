@@ -19,7 +19,7 @@
 <body>
 
 <header class="hero">
-  <div class="hero-inner">
+  <div class="column">
     <p class="kicker">A data story about Australia's whales</p>
     <h1>The Humpback Highway</h1>
     <p class="lede">Every winter, whales travel thousands of kilometres along our coast. Where do they go, when can you see them, and how did they come back from the brink?</p>
@@ -27,7 +27,7 @@
 </header>
 
 <nav class="toc" aria-label="Story sections">
-  <ol>
+  <ol class="column">
     <li><a href="#travellers"><span>1</span>Meet the travellers</a></li>
     <li><a href="#highway"><span>2</span>The highway</a></li>
     <li><a href="#wave"><span>3</span>The migration wave</a></li>
@@ -41,14 +41,13 @@
 
   <!-- ===================== 1. MEET THE TRAVELLERS ===================== -->
   <section class="chapter" id="travellers">
-    <div class="chapter-inner">
+    <div class="column">
       <div class="chapter-head">
         <p class="chapter-num">Chapter 1</p>
         <h2>Meet the travellers</h2>
         <p class="takeaway">Two species make up almost every whale report, and each keeps its own calendar.</p>
       </div>
 
-      <div class="split">
         <div class="prose">
           <p>Between 2016 and 2025, Australians logged <strong>14,019 reports</strong> of baleen whales. These are the giant filter-feeders that eat krill and small fish.</p>
           <p>Ten species were reported. Two dominate: <strong>humpback whales</strong> and <strong>southern right whales</strong> make up nearly 98% of reports.</p>
@@ -62,7 +61,6 @@
           <div id="c2" class="vis"></div>
           <figcaption>Source: Atlas of Living Australia. One report is one recorded sighting; the same whale can be reported many times.</figcaption>
         </figure>
-      </div>
 
       <div class="prose">
         <p>Each species visits at a different time of year. Humpbacks are reported mostly from <strong>June to October</strong>.</p>
@@ -75,7 +73,7 @@
           <p>Each slice is a month, with January at the top. Longer slices mean a bigger share of that species' reports.</p>
         </div>
         <div id="c1" class="vis"></div>
-        <figcaption><span class="how">How to read:</span> hover over a month to compare it across species. The faint ring marks a 25% share. Blue whales have only 150 reports, so their pattern is less certain. Source: Atlas of Living Australia, 2016–2025.</figcaption>
+        <figcaption>The faint ring marks a 25% share. Blue whales have only 150 reports, so their pattern is less certain. Source: Atlas of Living Australia, 2016–2025.</figcaption>
       </figure>
 
       <div class="prose">
@@ -88,14 +86,14 @@
           <p>Number of whale species reported off each state, 2016–2025</p>
         </div>
         <div id="c3" class="vis"></div>
-        <figcaption><span class="how">How to read:</span> darker states had more species reported; hover for the species list. Reports at sea count for the state with the nearest coast. The ACT has no coast. One rare sighting adds a species, so this shows species <em>recorded</em>, not species living there. Sources: Atlas of Living Australia; Natural Earth.</figcaption>
+        <figcaption>Reports at sea count for the state with the nearest coast. The ACT has no coast. One rare sighting adds a species, so this shows species <em>recorded</em>, not species living there. Sources: Atlas of Living Australia; Natural Earth.</figcaption>
       </figure>
     </div>
   </section>
 
   <!-- ===================== 2. THE HIGHWAY ===================== -->
   <section class="chapter" id="highway">
-    <div class="chapter-inner">
+    <div class="column">
       <div class="chapter-head">
         <p class="chapter-num">Chapter 2</p>
         <h2>The great whale highway</h2>
@@ -112,7 +110,7 @@
           <p>Biologically Important Areas for whales, coloured by behaviour</p>
         </div>
         <div id="c4" class="vis"></div>
-        <figcaption><span class="how">How to use:</span> pick a species from the menu, or click a behaviour in the legend to show only those areas (shift-click to add more). Hover over an area to see when whales use it. Source: Department of Climate Change, Energy, the Environment and Water (DCCEEW), Biologically Important Areas for protected marine species.</figcaption>
+        <figcaption>Source: Department of Climate Change, Energy, the Environment and Water (DCCEEW), Biologically Important Areas for protected marine species.</figcaption>
       </figure>
 
       <div class="prose">
@@ -126,14 +124,14 @@
           <p>Whale reports per 1° square (about 100 km across), in two-month periods, 2016–2025</p>
         </div>
         <div id="c5" class="vis"></div>
-        <figcaption><span class="how">How to read:</span> darker squares had more reports. Each step on the colour scale is ten times the last, so a few busy spots don't hide everywhere else. Source: Atlas of Living Australia.</figcaption>
+        <figcaption>Each step on the colour scale is ten times the last. Source: Atlas of Living Australia.</figcaption>
       </figure>
     </div>
   </section>
 
   <!-- ===================== 3. THE MIGRATION WAVE ===================== -->
   <section class="chapter" id="wave">
-    <div class="chapter-inner">
+    <div class="column">
       <div class="chapter-head">
         <p class="chapter-num">Chapter 3</p>
         <h2>Following the migration wave</h2>
@@ -150,7 +148,7 @@
           <p>Humpback reports by latitude and month. Each row is one stretch of coast; the white dot marks its busiest month.</p>
         </div>
         <div id="c6" class="vis"></div>
-        <figcaption><span class="how">How to read:</span> each row adds up to 100%. On the east coast, the far north is busiest in August. Around Sydney (32–35°S) the dots sit in June, as whales pass heading north. In the far south they sit in September–October, as whales return. Source: Atlas of Living Australia, 2016–2025.</figcaption>
+        <figcaption>Each row adds up to 100%. On the east coast, the far north is busiest in August. Around Sydney (32–35°S) the dots sit in June, as whales pass heading north. In the far south they sit in September–October, as whales return. Source: Atlas of Living Australia, 2016–2025.</figcaption>
       </figure>
 
       <div class="prose">
@@ -164,14 +162,14 @@
           <p>Share of each site's humpback reports by month, north at the top (total reports in brackets)</p>
         </div>
         <div id="c7" class="vis"></div>
-        <figcaption><span class="how">How to read:</span> taller peaks mean a bigger share of that site's reports. Hover to see the exact share. Source: Atlas of Living Australia, 2016–2025.</figcaption>
+        <figcaption>Source: Atlas of Living Australia, 2016–2025.</figcaption>
       </figure>
     </div>
   </section>
 
   <!-- ===================== 4. THE HUNT ===================== -->
   <section class="chapter" id="hunt">
-    <div class="chapter-inner">
+    <div class="column">
       <div class="chapter-head">
         <p class="chapter-num">Chapter 4</p>
         <h2>Hunted to the brink</h2>
@@ -192,7 +190,7 @@
           <p>Humpback whales caught at Australian whaling stations each year</p>
         </div>
         <div id="c8" class="vis"></div>
-        <figcaption><span class="how">How to read:</span> each bar is one year, split by coast; hover for exact numbers. Sources: Atlas of Living Australia, "Historic whale catch data from Australian whaling stations (1925–1978)"; ban and population figures from DCCEEW, <a href="https://www.agriculture.gov.au/sites/default/files/documents/eastern-humpback-whales.pdf">Eastern humpback whales</a>.</figcaption>
+        <figcaption>Sources: Atlas of Living Australia, "Historic whale catch data from Australian whaling stations (1925–1978)"; ban and population figures from DCCEEW, <a href="https://www.agriculture.gov.au/sites/default/files/documents/eastern-humpback-whales.pdf">Eastern humpback whales</a>.</figcaption>
       </figure>
 
       <div class="prose">
@@ -204,14 +202,13 @@
 
   <!-- ===================== 5. EYES ON THE WATER ===================== -->
   <section class="chapter" id="eyes">
-    <div class="chapter-inner">
+    <div class="column">
       <div class="chapter-head">
         <p class="chapter-num">Chapter 5</p>
         <h2>Eyes on the water</h2>
         <p class="takeaway">Today, ordinary people with phones record most of what we know.</p>
       </div>
 
-      <div class="split">
         <div class="prose">
           <p>Since 2016, <strong>56% of whale reports</strong> came through <span class="chip citizen"></span>citizen-science apps such as iNaturalist and Happywhale.</p>
           <p>Another 39% came through <span class="chip atlas"></span>government wildlife atlases, which also collect many reports from the public.</p>
@@ -223,9 +220,8 @@
             <p>Each square is 1% of reports, 2016–2025</p>
           </div>
           <div id="c9" class="vis"></div>
-          <figcaption><span class="how">How to use:</span> click a source in the legend to highlight it. Source: Atlas of Living Australia.</figcaption>
+          <figcaption>Source: Atlas of Living Australia.</figcaption>
         </figure>
-      </div>
 
       <div class="prose">
         <p>The boom is recent. In 2000, just <strong>3 reports</strong> came through citizen-science apps. In 2023 there were <strong>1,876</strong>.</p>
@@ -238,14 +234,14 @@
           <p>Whale reports per year, by how they were reported</p>
         </div>
         <div id="c10" class="vis"></div>
-        <figcaption>Hover for exact numbers. Source: Atlas of Living Australia, 2000–2025.</figcaption>
+        <figcaption>Source: Atlas of Living Australia, 2000–2025.</figcaption>
       </figure>
     </div>
   </section>
 
   <!-- ===================== 6. YOUR TURN ===================== -->
   <section class="chapter" id="yourturn">
-    <div class="chapter-inner">
+    <div class="column">
       <div class="chapter-head">
         <p class="chapter-num">Chapter 6</p>
         <h2>Your turn: witness the journey</h2>
@@ -262,7 +258,7 @@
           <p>Reports per half-degree square (about 50 km across), 2016–2025</p>
         </div>
         <div id="c11" class="vis"></div>
-        <figcaption><span class="how">How to use:</span> bigger circles mean more reports; colour shows the most-reported species. Click a species in the legend to highlight it. Only squares with 20 or more reports are shown. Source: Atlas of Living Australia.</figcaption>
+        <figcaption>Only squares with 20 or more reports are shown. Source: Atlas of Living Australia.</figcaption>
       </figure>
 
       <div class="prose">
@@ -284,7 +280,7 @@
 </main>
 
 <footer>
-  <div class="inner">
+  <div class="column">
     <h2>About this page</h2>
     <p><strong>Author:</strong> [Your name] · FIT3179 Data Visualisation 2 · Monash University · [Date]</p>
 
